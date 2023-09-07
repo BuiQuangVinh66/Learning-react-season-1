@@ -1,7 +1,7 @@
 import MyComponent from "./Example/MyComponent";
-import "./App.css";
-import "../styles/form.css";
-import "../styles/list.css";
+import "./App.scss";
+import "../styles/form.scss";
+import "../styles/list.scss";
 
 function App() {
   return (
