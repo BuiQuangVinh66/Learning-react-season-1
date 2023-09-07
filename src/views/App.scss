@@ -1,15 +1,16 @@
+@import '../styles/colors';
+
 body {
   background-color: #282c34;
   min-height: 100vh;
-  color: white;
+  color: $textColor_1;
+  padding: 50px;
+  display: flex;
+  text-align: center;
+  justify-content: start;
 }
 
-:root {
-  --_fff: #fff;
-  --_000: #000;
-  --_333: #333;
-  --_666: #666;
-}
+
 ::placeholder {
-  color: var(--_fff);
+  color: $textColor_1;
 }

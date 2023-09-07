@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// @import "colors";
+// color: myVariables;
+$textColor_1: #fff;
+$textColor_2: #000;
+$textColor_3: #333;
+$textColor_4: #666;
+
+// @import "func";
+// @include [name mixin]
+// @include bordered(blue, 1px);
+
+@mixin flexBox-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexBox-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexBox-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin SeparateCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin bordered($width: 2px, $color: #000) {
+    border: $width solid $color;
+}
+
+.listTodoContainer {
+    width: 100%;
+    justify-content: center;
+
+    .addTodo {
+        margin-bottom: 30px;
+
+        input {
+            width: 100%;
+            height: 40px;
+            outline: none;
+            padding: 0 10px;
+            font-size: 2rem;
+        }
+
+        button {
+            position: absolute;
+            width: 70px;
+            height: 40px;
+            font-size: 1.6rem;
+            margin-left: 20px;
+            border: none;
+
+            &:hover {
+                color: rgb(15, 239, 15);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .listTodoContent {
+        width: 100%;
+
+        .todoChild {
+            padding: 0 20px;
+            font-size: 2.3rem;
+            border-bottom: 1px solid #666;
+            padding: 20px 0;
+            text-align: start;
+            transition: all .1s;
+
+            &:hover {
+                background: transparent;
+                padding: 35px 0;
+                font-size: 2.5rem;
+                cursor: pointer;
+                color: rgb(15, 239, 15);
+            }
+
+            span {
+                margin: 0 20px 0 0;
+            }
+
+            button {
+                float: right;
+                margin-right: 15px;
+                padding: 0 20px;
+
+                &:hover {
+                    cursor: pointer;
+                    color: red;
+                }
+
+                &:last-child:hover {
+                    color: #13c3da;
+                }
+            }
+        }
+    }
+}
