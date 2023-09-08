@@ -6,9 +6,9 @@ import "./listTodo.scss";
 class ListTodo extends React.Component {
   state = {
     listTodo: [
-      { id: "123", title: "DocTerStrength" },
-      { id: "234", title: "DocTerStrength" },
-      { id: "567", title: "DocTerStrength" },
+      { id: "123", title: "Nuôi cá" },
+      { id: "234", title: "Nuôi gà" },
+      { id: "567", title: "Nuôi heo" },
     ],
     editTodo: {},
   };
