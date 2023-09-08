@@ -1,7 +1,7 @@
 import React from "react";
-import "./listTodo.scss";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import AddTodo from "./AddTodo";
+import "./listTodo.scss";
 
 class ListTodo extends React.Component {
   state = {
@@ -31,8 +31,31 @@ class ListTodo extends React.Component {
   };
 
   handleEditTodo = (todo) => {
+    let { editTodo, listTodo } = this.state;
+    let isEmptyObj = Object.keys(editTodo).length === 0;
+
+    if (isEmptyObj) {
+      this.setState({
+        editTodo: todo,
+      });
+    } else if (editTodo.id === todo.id) {
+      let listTodoCopy = [...listTodo];
+      let objIndex = listTodoCopy.findIndex((item) => item.id === todo.id);
+      listTodoCopy[objIndex].title = editTodo.title;
+
+      this.setState({
+        listTodo: listTodoCopy,
+        editTodo: {},
+      });
+      toast.success("Update todo success!");
+    }
+  };
+
+  handleOnChangeTodo = (event) => {
+    let editTodoCopy = { ...this.state.editTodo };
+    editTodoCopy.title = event.target.value;
     this.setState({
-      editTodo: todo,
+      editTodo: editTodoCopy,
     });
   };
 
@@ -57,7 +80,13 @@ class ListTodo extends React.Component {
                       <>
                         {editTodo.id === item.id ? (
                           <span>
-                            {index + 1} - <input value={editTodo.title} />
+                            {index + 1} -{" "}
+                            <input
+                              value={editTodo.title}
+                              onChange={(event) =>
+                                this.handleOnChangeTodo(event)
+                              }
+                            />
                           </span>
                         ) : (
                           <span>
@@ -76,7 +105,9 @@ class ListTodo extends React.Component {
                       onClick={() => this.handleEditTodo(item)}
                       className="edit"
                     >
-                      Edit
+                      {isEmptyObj === false && editTodo.id === item.id
+                        ? "Save"
+                        : "Edit"}
                     </button>
                   </div>
                 );
